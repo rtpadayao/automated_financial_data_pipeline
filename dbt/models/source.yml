@@ -1,0 +1,12 @@
+# ============================================
+# dbt Source Definition
+# Purpose: Register raw GL table as source
+# ============================================
+
+version: 2
+
+sources:
+  - name: finance
+    schema: finance
+    tables:
+      - name: gl_transactions
