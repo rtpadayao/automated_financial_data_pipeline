@@ -10,13 +10,14 @@ from airflow.operators.bash import BashOperator
 from datetime import datetime
 import requests
 import psycopg2
+import os   
 
 def extract_load_incremental():
     """Extract only new transactions from Flask API and load into Postgres"""
     conn = psycopg2.connect(
-        dbname="finance_demo",
-        user="postgres",
-        password="123learn",
+        dbname=os.getenv("POSTGRES_DB"),
+        user=os.getenv("POSTGRES_USER"),
+        password=os.getenv("POSTGRES_PASSWORD"),
         host="postgres",
         port="5432"
     )
