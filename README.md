@@ -43,38 +43,3 @@ This project demonstrates a containerized, automated data pipeline:
 2. Show DAG graph in Airflow UI.
 3. Show dbt run + tests passing.
 4. Show Power BI dashboard refreshing.
-
-## Notes
-
-- `.gitignore` keeps repo clean.
-- `README.md` explains project clearly for recruiters.
-
-project-root/
-│
-├── docker-compose.yml          # Container orchestration
-├── .env                        # Environment variables (credentials, configs)
-│
-├── postgres/
-│   └── init.sql                # Schema + base table creation
-│
-├── flaskapi/
-│   ├── app.py                  # Mock API serving GL data
-│   ├── requirements.txt        # Flask + pandas dependencies
-│   └── data/
-│       └── gl_transactions.csv # Sample dataset
-│
-├── dags/
-│   └── gl_pipeline.py          # Airflow DAG (extract → load → dbt run)
-│
-├── dbt/
-│   ├── dbt_project.yml         # dbt project config
-│   ├── profiles.yml            # dbt connection to Postgres
-│   └── models/
-│       ├── source.yml          # Source definition (finance.gl_transactions)
-│       └── transform.sql       # Incremental transformation (normalize Debit/Credit → Amount)
-│
-├── airflow_logs/               # Persisted Airflow logs
-└── postgres_data/              # Persisted Postgres data
-│
-├── .gitignore
-└── README.md
